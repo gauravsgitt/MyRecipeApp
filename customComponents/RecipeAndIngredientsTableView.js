@@ -29,6 +29,7 @@ const RecipeAndIngredientsTableView = () => {
             keyExtractor={(item, index) => item + index}
             renderItem={({ item }) => <SectionContentView item={item} />}
             renderSectionHeader={({ section: { title } }) => <SectionHeaderView title={title} />}
+            stickySectionHeadersEnabled={false}
         />
     )
 };
