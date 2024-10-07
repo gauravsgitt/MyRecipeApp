@@ -1,11 +1,37 @@
-import { View } from "react-native"
+import { SectionList, Text, View } from "react-native";
+import styles from "../styles/styles";
 
-const RecipeAndIngredientsTableView = () => {
+const RecipeAndIngredientsTableView = (props) => {
+    const data = props.recipesData
     return (
-        <View>
+        <SectionList
+            style={styles.myRecipeAndIngredientsTableView}
+            sections={data}
+            keyExtractor={(item, index) => item + index}
+            renderItem={({ item }) => <SectionContentView item={item} />}
+            renderSectionHeader={({ section: { title } }) => <SectionHeaderView title={title}/>}
+        />
+    )
+};
 
+const SectionHeaderView = (props) => {
+    const title = props.title
+
+    return (
+        <View style={styles.mySectionHeaderContainerView}>
+            <Text style={styles.mySectionHeaderText}>{title}</Text>
         </View>
     )
-}
+};
+
+const SectionContentView = (props) => {
+    const item = props.item
+
+    return (
+        <View style={styles.mySectionContentView}>
+            <Text style={styles.mySectionContentText}>{item}</Text>
+        </View>
+    )
+};
 
 export default RecipeAndIngredientsTableView;

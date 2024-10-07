@@ -58,6 +58,42 @@ const styles = StyleSheet.create({
         borderRadius: 12,
         borderWidth: 0.5,
         borderColor: 'gray'
+    },
+
+    myRecipeAndIngredientsTableView: {
+        marginStart: 25,
+        marginEnd: 25
+    },
+
+    mySectionHeaderContainerView: {
+        marginTop: 20,
+        height: 40,
+        backgroundColor: '#CACBC3',
+        justifyContent: 'center',
+        borderTopLeftRadius: 12,
+        borderTopRightRadius: 12
+    },
+
+    mySectionHeaderText: {
+        fontFamily: 'Arial',
+        fontSize: 20,
+        marginStart: 15
+    },
+
+    mySectionContentView: {
+        backgroundColor: '#E7EAE3',
+        padding: 5,
+        shadowColor: 'gray',
+        shadowOffset: { width: 3, height: 3 },
+        shadowOpacity: 0.8,
+        shadowRadius: 4,
+        elevation: 5
+    },
+
+    mySectionContentText: {
+        fontFamily: 'Arial',
+        fontSize: 16,
+        marginStart: 10
     }
 });
 
