@@ -1,15 +1,34 @@
 import { SectionList, Text, View } from "react-native";
 import styles from "../styles/styles";
 
-const RecipeAndIngredientsTableView = (props) => {
-    const data = props.recipesData
+const RecipeAndIngredientsTableView = () => {
+
+    const data = [
+        {
+            title: 'Breakfast',
+            data: ['Pancakes', 'Omelette', 'Fruit Salad'],
+        },
+        {
+            title: 'Lunch',
+            data: ['Grilled Chicken', 'Caesar Salad', 'Spaghetti'],
+        },
+        {
+            title: 'Dinner',
+            data: ['Steak', 'Mashed Potatoes', 'Vegetable Stir Fry'],
+        },
+        {
+            title: 'Dessert',
+            data: ['Chocolate Cake', 'Ice Cream', 'Cheesecake'],
+        },
+    ];
+
     return (
         <SectionList
             style={styles.myRecipeAndIngredientsTableView}
             sections={data}
             keyExtractor={(item, index) => item + index}
             renderItem={({ item }) => <SectionContentView item={item} />}
-            renderSectionHeader={({ section: { title } }) => <SectionHeaderView title={title}/>}
+            renderSectionHeader={({ section: { title } }) => <SectionHeaderView title={title} />}
         />
     )
 };
