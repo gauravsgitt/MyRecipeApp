@@ -94,6 +94,27 @@ const styles = StyleSheet.create({
         fontFamily: 'Arial',
         fontSize: 16,
         marginStart: 10
+    },
+
+    myAddRecipeButtonContainerView: {
+        flexDirection: 'row-reverse',
+        marginStart: 25,
+        marginEnd: 25,
+        marginBottom: 10
+    },
+
+    myAddRecipeButton: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 100,
+        padding: 8,
+        backgroundColor: '#6C8693',
+        borderRadius: 12,
+        marginEnd: 2
+    },
+
+    myAddRecipeButtonTitle: {
+        color: '#fff'
     }
 });
 

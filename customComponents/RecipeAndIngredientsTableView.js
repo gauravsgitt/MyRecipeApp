@@ -30,6 +30,7 @@ const RecipeAndIngredientsTableView = () => {
             renderItem={({ item }) => <SectionContentView item={item} />}
             renderSectionHeader={({ section: { title } }) => <SectionHeaderView title={title} />}
             stickySectionHeadersEnabled={false}
+            showsVerticalScrollIndicator={false}
         />
     )
 };
