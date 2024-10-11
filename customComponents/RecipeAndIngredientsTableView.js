@@ -1,7 +1,15 @@
 import { SectionList, Text, View } from "react-native";
 import styles from "../styles/styles";
+import { useEffect } from "react";
 
 const RecipeAndIngredientsTableView = () => {
+
+    useEffect(() => {
+        console.log("RecipeAndIngredientsTableView mounted...");
+        return () => {
+            console.log("RecipeAndIngredientsTableView unmounted...");
+        }
+    }, []);
 
     const demoData = [
         {
@@ -28,25 +36,44 @@ const RecipeAndIngredientsTableView = () => {
             sections={demoData}
             keyExtractor={(item, index) => item + index}
             renderItem={({ section }) => null}
-            renderSectionHeader={renderSection}
+            renderSectionHeader={({section}) => <RenderSection section={section} /> }
             stickySectionHeadersEnabled={false}
             showsVerticalScrollIndicator={false}
         />
     )
 };
 
-const renderSection = ({ section }) => (
-    <View style={[styles.mySectionContainerView, styles.makeTopLeftAndRightCorner]}>
-        <SectionHeaderView title={section.title} />
-        {
-            section.data.map((item, index) => (
-                <SectionContentView showShadow={index === section.data.length - 1} cornerRadius={index === section.data.length - 1} key={index} item={item} />
-            ))
+const RenderSection = (props) => {
+    const section = props.section
+
+    useEffect(() => {
+        console.log(`${section.title} section mounted...`);
+        return () => {
+            console.log(`${section.title} section unmounted...`);
         }
-    </View>
-);
+    }, []);
+
+    return (
+        <View style={[styles.mySectionContainerView, styles.makeTopLeftAndRightCorner]}>
+            <SectionHeaderView title={section.title} />
+            {
+                section.data.map((item, index) => (
+                    <SectionContentView showShadow={index === section.data.length - 1} cornerRadius={index === section.data.length - 1} key={index} item={item} />
+                ))
+            }
+        </View>
+    )
+};
 
 const SectionHeaderView = (props) => {
+
+    useEffect(() => {
+        console.log("SectionHeaderView mounted...");
+        return () => {
+            console.log("SectionHeaderView unmounted...");
+        }
+    }, []);
+
     const title = props.title
 
     return (
@@ -57,6 +84,14 @@ const SectionHeaderView = (props) => {
 };
 
 const SectionContentView = (props) => {
+
+    useEffect(() => {
+        console.log("SectionContentView mounted...");
+        return () => {
+            console.log("SectionContentView unmounted...");
+        }
+    }, []);
+
     const item = props.item
     const cornerRadius = props.cornerRadius
     const showShadow = props.showShadow

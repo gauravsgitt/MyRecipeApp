@@ -1,7 +1,16 @@
 import { Image, Text, View } from "react-native";
 import styles from "../styles/styles";
+import { useEffect } from "react";
 
 const TopView = () => {
+
+    useEffect(() => {
+        console.log("TopView mounted...");
+        return () => {
+            console.log("TopView unmounted...");
+        }
+    }, []);
+
     return (
         <View style={styles.myTopViewContainer}>
             <View style={styles.myRecipeImageContainerView}>

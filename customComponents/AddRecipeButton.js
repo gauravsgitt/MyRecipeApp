@@ -1,8 +1,16 @@
 import { Text, View, TouchableOpacity, Alert } from "react-native";
 import styles from "../styles/styles";
+import { useEffect } from "react";
 
 const AddRecipeButton = (props) => {
     const title = props.title
+
+    useEffect(() => {
+        console.log("AddRecipeButton mounted...");
+        return () => {
+            console.log("AddRecipeButton unmounted...");
+        }
+    }, []);
 
     return (
         <View style={styles.myAddRecipeButtonContainerView}>
