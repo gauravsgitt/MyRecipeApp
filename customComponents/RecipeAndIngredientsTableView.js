@@ -3,7 +3,7 @@ import styles from "../styles/styles";
 
 const RecipeAndIngredientsTableView = () => {
 
-    const data = [
+    const demoData = [
         {
             title: 'Breakfast',
             data: ['Pancakes', 'Omelette', 'Fruit Salad'],
@@ -25,15 +25,26 @@ const RecipeAndIngredientsTableView = () => {
     return (
         <SectionList
             style={styles.myRecipeAndIngredientsTableView}
-            sections={data}
+            sections={demoData}
             keyExtractor={(item, index) => item + index}
-            renderItem={({ item }) => <SectionContentView item={item} />}
-            renderSectionHeader={({ section: { title } }) => <SectionHeaderView title={title} />}
+            renderItem={({ section }) => null}
+            renderSectionHeader={renderSection}
             stickySectionHeadersEnabled={false}
             showsVerticalScrollIndicator={false}
         />
     )
 };
+
+const renderSection = ({ section }) => (
+    <View style={[styles.mySectionContainerView, styles.makeTopLeftAndRightCorner]}>
+        <SectionHeaderView title={section.title} />
+        {
+            section.data.map((item, index) => (
+                <SectionContentView showShadow={index === section.data.length - 1} cornerRadius={index === section.data.length - 1} key={index} item={item} />
+            ))
+        }
+    </View>
+);
 
 const SectionHeaderView = (props) => {
     const title = props.title
@@ -47,10 +58,13 @@ const SectionHeaderView = (props) => {
 
 const SectionContentView = (props) => {
     const item = props.item
+    const cornerRadius = props.cornerRadius
+    const showShadow = props.showShadow
 
     return (
-        <View style={styles.mySectionContentView}>
+        <View style={[styles.mySectionContentView, cornerRadius && styles.makeBottomLeftAndRightCorner]}>
             <Text style={styles.mySectionContentText}>{item}</Text>
+            <View></View>
         </View>
     )
 };

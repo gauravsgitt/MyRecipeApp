@@ -18,12 +18,14 @@ const styles = StyleSheet.create({
     },
 
     myRecipeHeadingLabel: {
+        color: 'black',
         fontSize: 40,
         fontFamily: 'Roboto',
         width: '90%'
     },
 
     myRecipeSubHeadingLabel: {
+        color: 'black',
         fontSize: 12,
         fontFamily: 'Roboto',
         width: '90%'
@@ -44,11 +46,15 @@ const styles = StyleSheet.create({
         marginStart: 25,
         marginTop: 25,
         marginBottom: 25,
-        shadowColor: 'gray',
-        shadowOffset: { width: 5, height: 7 },
-        shadowOpacity: 0.8,
-        shadowRadius: 4,
-        elevation: 5
+        ...(Platform.OS === 'ios' && {
+            shadowColor: 'gray',
+            shadowOffset: { width: 5, height: 7 },
+            shadowOpacity: 0.8,
+            shadowRadius: 4,
+        }),
+        ...(Platform.OS === 'android' && {
+            elevation: 25,
+        })
     },
 
     myRecipeImage: {
@@ -65,16 +71,30 @@ const styles = StyleSheet.create({
         marginEnd: 25
     },
 
+    mySectionContainerView: {
+        borderColor: 'gray',
+        overflow: 'hidden',
+        marginBottom: 15
+    },
+
     mySectionHeaderContainerView: {
-        marginTop: 20,
         height: 40,
         backgroundColor: '#CACBC3',
-        justifyContent: 'center',
+        justifyContent: 'center'
+    },
+
+    makeBottomLeftAndRightCorner: {
+        borderBottomLeftRadius: 12,
+        borderBottomRightRadius: 12
+    },
+
+    makeTopLeftAndRightCorner: {
         borderTopLeftRadius: 12,
         borderTopRightRadius: 12
     },
 
     mySectionHeaderText: {
+        color: 'black',
         fontFamily: 'Arial',
         fontSize: 20,
         marginStart: 15
@@ -83,14 +103,10 @@ const styles = StyleSheet.create({
     mySectionContentView: {
         backgroundColor: '#E7EAE3',
         padding: 5,
-        shadowColor: 'gray',
-        shadowOffset: { width: 3, height: 3 },
-        shadowOpacity: 0.8,
-        shadowRadius: 4,
-        elevation: 5
     },
 
     mySectionContentText: {
+        color: 'black',
         fontFamily: 'Arial',
         fontSize: 16,
         marginStart: 10
@@ -115,6 +131,14 @@ const styles = StyleSheet.create({
 
     myAddRecipeButtonTitle: {
         color: '#fff'
+    },
+
+    shadowStyle: {
+        shadowColor: 'black',
+        shadowOffset: { width: 0, height: 10 },
+        shadowOpacity: 1,
+        shadowRadius: 10,
+        elevation: 5
     }
 });
 
