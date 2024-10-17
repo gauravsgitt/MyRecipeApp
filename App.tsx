@@ -2,33 +2,40 @@ import React, { useState } from 'react';
 import {
   SafeAreaView,
   View,
-  ActivityIndicator,
-  Button
+  Modal,
+  Button,
+  Text
 } from 'react-native';
 import styles from './styles/styles';
 
 const App = () => {
 
-  const [showLoader, setShowLoader] = useState(false);
-
-  const showLoaderOnScreen = () => {
-    setShowLoader(true)
-
-    setTimeout(() => {
-      setShowLoader(false)
-    }, 3000);
-  }
+  const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <SafeAreaView style={styles.mySafeAreaView}>
       <View style={styles.myMainContainerView}>
-        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'pink'}}>
-        {/* <ActivityIndicator size={'large'} animating={showLoader}/> */}
-        {
-          showLoader ? <ActivityIndicator size={'large'} animating={showLoader}/> : null
-        }
-        <Button title="Show Loader" onPress={showLoaderOnScreen}/>
+
+        <View style={{justifyContent: 'flex-end'}}>
+          <Button title="Show Modal" onPress={() => setModalVisible(true)} />
         </View>
+
+
+        <Modal
+          animationType='fade'
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => setModalVisible(false)}
+        >
+          <SafeAreaView style={styles.modalOverlay}>
+            <View style={styles.modalView}>
+              <Text style={styles.modalText}>Hello, this is a modal!</Text>
+              <View style={{backgroundColor: 'blue', borderRadius: 10, width: '50%'}}>
+              <Button color={'white'} title="Close Modal" onPress={() => setModalVisible(false)} />
+              </View>
+            </View>
+          </SafeAreaView>
+        </Modal>
       </View>
     </SafeAreaView>
   )
